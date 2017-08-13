@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Json Formatter</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        .text{
+           width:100%
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#format_button").click(function(){
+                var input = $("#input").val();
+                var data = {};
+                data["input"] = input;
+                $.post("/format",data,function(output,status){
+                    $("#output").val(output);
+                });
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container" >
+        <span class="glyphicon glyphicon-retweet"></span>
+    Please input your Json:<br />
+    <div class="row">
+        <div class="span12">
+            <textarea id="input" rows="20" class="text"></textarea>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="span12">
+                <div class="offset10">
+                <a id="format_button" class="btn btn-primary"><i class="icon-retweet icon-white"></i>&nbsp;<b>FORMAT</b></a>
+                </div>
+            </div>
+        </div>
+    <br/>
+    <div class="row">
+        <div class="span12">
+            <textarea id="output" rows="20" class="text"></textarea>
+        </div>
+    </div>
+
+</body>
+</html>
